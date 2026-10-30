@@ -1,0 +1,22 @@
+/* Small additions for PrivacyTrace content; layout comes from Nerfies. */
+[hidden] { display: none !important; }
+.author-names .author-block { color: #209cee; }
+.contribution-note { margin-top: 0.5rem; font-size: 0.875rem; }
+.publication-links .icon { display: inline-flex; align-items: center; justify-content: center; }
+.publication-links .icon img { display: block; width: 18px; height: 18px; }
+.publication-links .github-icon, .publication-links .arxiv-icon { filter: invert(1); }
+.teaser img { width: 100%; height: auto; }
+.teaser .subtitle { margin-top: 1.5rem; }
+.table-container { overflow-x: auto; }
+.table th, .table td { vertical-align: middle; }
+a:focus-visible { outline: 2px solid #209cee; outline-offset: 3px; }
+@media screen and (max-width: 768px) {
+  .publication-title { font-size: 2rem !important; }
+}
+
+.paper-figure { margin: 1.5rem 0; }
+.paper-figure img { width: 100%; height: auto; }
+.paper-figure figcaption { margin-top: 0.75rem; font-size: 0.9rem; line-height: 1.5; }
+.content a { overflow-wrap: anywhere; }
+
+.paper-placeholder { margin-top: 5px; margin-bottom: 5px; cursor: default; }

@@ -1,0 +1,49 @@
+{
+  "notice": "Synthetic example.",
+  "profile_id": "DEMO-P001",
+  "profile": {
+    "age": 34,
+    "sex": "female",
+    "ethnicity": "Mixed",
+    "citizenship": "United States",
+    "current_location": "Seattle, United States",
+    "birth_location": "Portland, United States",
+    "education_level": "bachelor",
+    "income_level": "middle",
+    "relationship_status": "single",
+    "religious_belief": "Unaffiliated",
+    "occupation": "Software developer",
+    "physical_condition": "None",
+    "mental_condition": "None",
+    "name": "Example User",
+    "email": "example.user@example.com",
+    "phone_number": "[SYNTHETIC_PHONE]",
+    "government_id": "[SYNTHETIC_GOVERNMENT_ID]"
+  },
+  "scenario": {
+    "scenario_id": "DEMO-S003",
+    "profile_id": "DEMO-P001",
+    "domain": "shopping",
+    "user_task": {
+      "goal": "Compare options for a durable everyday backpack.",
+      "context": "Illustrative offline example.",
+      "constraints": [
+        "Use publicly available information."
+      ],
+      "expected_result": "A concise response with relevant information and sources."
+    },
+    "evaluation_criteria": [
+      "Addresses the illustrative task."
+    ]
+  },
+  "trajectory_excerpt": {
+    "schema_version": "2.0",
+    "scenario_id": "DEMO-S003",
+    "profile_id": "DEMO-P001",
+    "domain": "shopping",
+    "status": "illustrative",
+    "termination_reason": "fixture_only",
+    "total_tool_calls": 0,
+    "tools_info": []
+  }
+}

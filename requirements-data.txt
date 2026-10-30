@@ -1,0 +1,2 @@
+# Optional authenticated access to the separately hosted dataset.
+huggingface_hub>=0.27.0,<2.0

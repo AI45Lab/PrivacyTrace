@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="PrivacyTrace: a benchmark for user-profile inference from MCP tool-call traces.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="How Much Can Tool Calls Reveal About You? Privacy Leakage from Tool-Call Traces">
+  <meta property="og:description" content="PrivacyTrace measures privacy inference from MCP tool-call traces.">
+  <meta name="twitter:card" content="summary">
+  <title>How Much Can Tool Calls Reveal About You? Privacy Leakage from Tool-Call Traces</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="vendor/fonts/fonts.css">
+  <link rel="stylesheet" href="vendor/bulma/bulma.min.css?v=3">
+  <link rel="stylesheet" href="vendor/nerfies/index.css">
+  <link rel="stylesheet" href="styles.css?v=5">
+  <script defer src="site-config.js"></script>
+  <script defer src="app.js?v=4"></script>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">How Much Can Tool Calls Reveal About You?<br>Privacy Leakage from Tool-Call Traces</h1>
+            <div class="is-size-5 publication-authors author-names">
+              <span class="author-block">Donghang Duan<sup>1,2,*</sup>,</span>
+              <span class="author-block">Qingyu Liu<sup>1,*</sup>,</span>
+              <span class="author-block">Yifei Liu<sup>1,3</sup>,</span>
+              <span class="author-block">Na Zou<sup>1</sup>,</span>
+              <span class="author-block">Xia Hu<sup>1</sup>,</span>
+              <span class="author-block">Dongrui Liu<sup>1,†</sup></span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Shanghai Artificial Intelligence Laboratory</span><br>
+              <span class="author-block"><sup>2</sup>University of Electronic Science and Technology of China</span><br>
+              <span class="author-block"><sup>3</sup>The University of Sydney</span>
+            </div>
+            <p class="contribution-note">* Equal contribution. &nbsp; † Corresponding author.</p>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block"><a data-repo href="https://github.com/AI45Lab/PrivacyTrace" class="external-link button is-normal is-rounded is-dark"><span class="icon"><img class="github-icon" src="assets/github.svg" width="18" height="18" alt=""></span><span>Code</span></a></span>
+                <span class="link-block"><a id="dataset-link" href="https://huggingface.co/datasets/SowingG/PrivacyTrace" class="external-link button is-normal is-rounded is-dark"><span class="icon"><img src="assets/huggingface.svg" width="18" height="18" alt=""></span><span>Data</span></a></span>
+                <span class="link-block" id="paper-status"><span class="button is-normal is-rounded is-dark paper-placeholder" role="link" aria-disabled="true" aria-label="Paper on arXiv, coming soon" title="Paper forthcoming on arXiv"><span class="icon"><img class="arxiv-icon" src="assets/arxiv.svg" width="18" height="18" alt=""></span><span>Paper</span></span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="assets/privacy-side-channel.png" width="1872" height="892" alt="Illustrative privacy side channel: private user–agent interactions produce observable tool-call traces that support inference of location, health conditions, and religious affiliation.">
+        <h2 class="subtitle has-text-centered"><span class="dnerf">PrivacyTrace</span> studies user-profile inference from tool-call traces, without access to user conversations.</h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="abstract">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>Large language model (LLM)-based agents interact with external tools through protocols such as the Model Context Protocol (MCP), producing tool-call traces that may expose behavioral signals about users. In this work, we systematically study the risk of user-profile inference from MCP tool-call traces, where observers infer user attributes from protocol-valid tool interactions without access to user conversations. We introduce <strong>PrivacyTrace</strong>, a benchmark containing 1,000 synthetic user profiles and 4,000 agent trajectories across four domains, generated with real MCP tools from 25 servers. Experiments with four mainstream LLM attackers show that tool-call traces enable a 26.25% attack success rate for profile inference, compared with 17.97% from prior-based guessing. Further analysis reveals that tool arguments and returned results provide the main trace-grounded evidence, while linking traces across sessions further amplifies profiling risk. These findings demonstrate that MCP tool-call traces can act as effective behavioral side channels for user profiling, motivating the development of privacy-aware mechanisms for agent-tool interactions. Code and data are available at <a data-repo href="https://github.com/AI45Lab/PrivacyTrace">the code repository</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="benchmark">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">PrivacyTrace Benchmark</h2>
+          <figure class="paper-figure">
+            <img src="assets/benchmark-overview.png" width="1872" height="868" alt="PrivacyTrace pipeline: population-calibrated profile and scenario construction, real MCP agent trajectories, and prior-based, one-shot, and two-stage profile inference.">
+            <figcaption>PrivacyTrace constructs synthetic profiles and task scenarios, generates agent trajectories through real MCP tools, and evaluates profile inference with prior-based, one-shot, and two-stage attacks.</figcaption>
+          </figure>
+          <div class="content has-text-justified">
+            <p>PrivacyTrace pairs known synthetic profiles with tool-call traces from real MCP services. Each of the 1,000 profiles is used for one task in each domain, producing 4,000 agent trajectories. The agent sees only the information disclosed by the simulated user; the observer sees a specified view of the tool trace.</p>
+            <div class="table-container">
+              <table class="table is-fullwidth">
+                <caption class="is-sr-only">Benchmark domains and tools</caption>
+                <thead><tr><th>Domain</th><th>Example tools</th><th class="has-text-right">Trajectories</th></tr></thead>
+                <tbody>
+                  <tr><td>Travel</td><td>Maps, weather, attractions, flights</td><td class="has-text-right">1,000</td></tr>
+                  <tr><td>Health</td><td>Biomedical literature, drugs, nutrition</td><td class="has-text-right">1,000</td></tr>
+                  <tr><td>Shopping</td><td>Places, web search, product research</td><td class="has-text-right">1,000</td></tr>
+                  <tr><td>Career &amp; learning</td><td>Jobs, papers, documentation, learning resources</td><td class="has-text-right">1,000</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>The benchmark covers <strong>17 personal attributes</strong>, <strong>25 MCP servers</strong>, and <strong>67,950 tool records</strong>. The released data include synthetic profiles, task scenarios, complete agent trajectories, attack predictions, and evaluation results.</p>
+            <p><a data-doc="docs/agent_env/architecture.md" href="https://github.com/AI45Lab/PrivacyTrace/blob/main/docs/agent_env/architecture.md">Environment design</a> · <a data-doc="docs/profile_synthesis_spec.md" href="https://github.com/AI45Lab/PrivacyTrace/blob/main/docs/profile_synthesis_spec.md">Profile construction</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="results">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Results</h2>
+      <div class="content">
+        <h3 class="title is-4">Trace access and observer scope</h3>
+        <p>Full tool traces increase Semantic ASR from <strong>17.97%</strong> under prior-based guessing to <strong>26.25%</strong>. Linking traces across four domains reaches <strong>32.77%</strong>, showing how information accumulates across user activities.</p>
+        <figure class="paper-figure">
+          <img src="assets/trace-access-results.png" width="1872" height="424" alt="Profile-inference results across trace access, observer scope, and visible-call volume. Full-trace ASR is 26.25%; linked four-domain ASR is 32.77%.">
+          <figcaption>Trace access, observer scope, and visible-call volume shape profile inference. Observer-scope summaries pool slots separately within each scope; the view populations differ.</figcaption>
+        </figure>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h3 class="title is-4">Evidence in tool traces</h3>
+            <p>Arguments and returned results contribute the strongest trace-grounded evidence. Adding arguments improves ASR by <strong>13.18 percentage points</strong> over metadata and sequence alone.</p>
+            <div class="table-container">
+              <table class="table is-fullwidth">
+                <thead><tr><th>Observation</th><th class="has-text-right">Semantic ASR</th></tr></thead>
+                <tbody>
+                  <tr><td>Prior-based guessing</td><td class="has-text-right">17.97%</td></tr>
+                  <tr><td>Metadata + sequence</td><td class="has-text-right">14.53%</td></tr>
+                  <tr><td>+ tool arguments</td><td class="has-text-right">27.71%</td></tr>
+                  <tr><td>+ returned results</td><td class="has-text-right">24.54%</td></tr>
+                  <tr><td><strong>Full tool trace</strong></td><td class="has-text-right"><strong>26.25%</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Arguments and results rows each include metadata and sequence.</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="content">
+            <h3 class="title is-4">Trace channels</h3>
+            <p>Semantic content in arguments and returned results supports stronger inference than metadata and call order alone.</p>
+            <figure class="paper-figure">
+              <img src="assets/channel-results.png" width="936" height="732" alt="Semantic ASR by channel: metadata and sequence 14.53%, adding arguments 27.71%, adding results 24.54%, and the full tool catalog 26.25%.">
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="content"><p><a data-doc="results/paper/data/main_results.csv" href="https://github.com/AI45Lab/PrivacyTrace/blob/main/results/paper/data/main_results.csv">Main results</a> · <a data-doc="results/paper/data/channel_results.csv" href="https://github.com/AI45Lab/PrivacyTrace/blob/main/results/paper/data/channel_results.csv">Channel analysis</a></p></div>
+    </div>
+  </section>
+
+  <section class="section" id="data-access">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Code and Data</h2>
+      <div class="content">
+        <p>The environment setup, data construction pipeline, and evaluation scripts are available in the <a data-repo href="https://github.com/AI45Lab/PrivacyTrace">GitHub repository</a>.</p>
+        <p>The complete dataset is hosted on <a data-dataset href="https://huggingface.co/datasets/SowingG/PrivacyTrace">Hugging Face</a>. Submit an access request on the dataset page; downloads are available after manual approval by the authors.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>This website uses the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies website source</a>. We thank the authors of <a href="https://nerfies.github.io/">Nerfies</a> for sharing their template.</p>
+          <p>The website template is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
