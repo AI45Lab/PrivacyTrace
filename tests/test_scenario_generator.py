@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from privacy_trace.scenario_generator import (
+from generate.generate_scenarios import (
     DOMAINS,
     GenerationConfig,
     SCENARIO_PIPELINE_ID,
@@ -19,7 +19,7 @@ from privacy_trace.scenario_generator import (
     sample_candidate_tool_subset,
     validate_case_record,
 )
-from scripts.build_scenario_tool_pool import build_tool_pool, merge_discoveries
+from generate.build_tool_pool import build_tool_pool, merge_discoveries
 
 
 def make_tool(domain="travel", index=1, *, required=("query",)):

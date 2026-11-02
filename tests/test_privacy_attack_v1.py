@@ -6,21 +6,21 @@ import unittest
 from unittest.mock import MagicMock, patch
 from pathlib import Path
 
-from agent_env.recovery import require_nonempty_model
-from privacy_trace.privacy_attacker import (
+from agent.recovery import require_nonempty_model
+from attack.inference import (
     PROFILE_ATTRIBUTES,
     run_stage1_attack,
     run_stage2_from_stage1,
 )
-from scripts.analyze_privacy_experiments import paired_outcomes, two_stage_metrics
-from scripts.build_privacy_eval_records import add_arm, rows_for_output
-from scripts.run_channel_experiments import build_arg_parser as channel_parser
-from scripts.run_privacy_attacks import build_arg_parser as attack_parser
-from scripts.run_semantic_judge import build_arg_parser as judge_parser
-from scripts.run_view_scope_experiments import cross_domain_observation
-from scripts.run_view_scope_experiments import parser as view_scope_parser
-from scripts.run_privacy_recovery_watchdog import _validate, output_count, supervise
-from privacy_trace.llm_client import DirectOpenAIClient
+from eval.analyze_privacy import paired_outcomes, two_stage_metrics
+from eval.build_records import add_arm, rows_for_output
+from attack.run_channels import build_arg_parser as channel_parser
+from attack.run_attacks import build_arg_parser as attack_parser
+from eval.run_judge import build_arg_parser as judge_parser
+from attack.run_view_scopes import cross_domain_observation
+from attack.run_view_scopes import parser as view_scope_parser
+from attack.watchdog import _validate, output_count, supervise
+from llm.client import DirectOpenAIClient
 
 
 def stage1_payload():
@@ -107,7 +107,7 @@ class PrivacyAttackV1Tests(unittest.TestCase):
         with (
             patch("httpx.Client"),
             patch("openai.OpenAI", return_value=openai_client),
-            patch("privacy_trace.llm_client.threading.Timer") as timer,
+            patch("llm.client.threading.Timer") as timer,
         ):
             client = DirectOpenAIClient(
                 api_keys=("key-1",),
@@ -199,7 +199,7 @@ class PrivacyAttackV1Tests(unittest.TestCase):
                 add_arm(rows, seen, "arm", root, truth, recursive=False, two_stage=False)
 
     def test_connection_watchdog_requires_resumable_command(self):
-        module = __import__("scripts.run_privacy_recovery_watchdog", fromlist=["parser"])
+        module = __import__("attack.watchdog", fromlist=["parser"])
         parsed = module.parser().parse_args(
             ["--output-dir", "out", "--expected-count", "4", "--", "python", "runner.py", "--resume"]
         )
@@ -211,7 +211,7 @@ class PrivacyAttackV1Tests(unittest.TestCase):
             self.assertEqual(output_count(root, "S*.json"), 1)
 
     def test_connection_watchdog_terminates_child_on_signal(self):
-        module = __import__("scripts.run_privacy_recovery_watchdog", fromlist=["parser"])
+        module = __import__("attack.watchdog", fromlist=["parser"])
         child = MagicMock(pid=12345)
         child.poll.return_value = None
 
@@ -245,7 +245,7 @@ class PrivacyAttackV1Tests(unittest.TestCase):
         terminate.assert_called_once_with(child)
 
     def test_connection_watchdog_allows_final_bookkeeping(self):
-        module = __import__("scripts.run_privacy_recovery_watchdog", fromlist=["parser"])
+        module = __import__("attack.watchdog", fromlist=["parser"])
         child = MagicMock(pid=12345)
         child.poll.return_value = None
         child.wait.return_value = 0

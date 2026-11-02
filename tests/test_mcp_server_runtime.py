@@ -5,11 +5,11 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from agent_env.server_catalog import (
+from agent.server_catalog import (
     build_server_process,
     load_server_commands,
 )
-from agent_env.settings import load_project_env
+from agent.settings import load_project_env
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]

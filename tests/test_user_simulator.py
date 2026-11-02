@@ -7,7 +7,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from agent_env.user_simulator import (  # noqa: E402
+from agent.user_simulator import (  # noqa: E402
     SimulatorOutputError,
     UserSimulator,
     build_simulator_system_prompt,

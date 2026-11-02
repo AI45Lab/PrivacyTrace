@@ -61,7 +61,7 @@ scenario 合成允许任务失败，也允许后续 Agent 无法完成任务。�
 配额，最大在途并发不超过 100；调用模型 API 时不使用代理。
 
 ```bash
-python -m privacy_trace.scenario_generator \
+python -m generate.generate_scenarios \
   --n 1000 \
   --input artifacts/profile_pool/profiles.jsonl \
   --output artifacts/scenario/cases.jsonl \

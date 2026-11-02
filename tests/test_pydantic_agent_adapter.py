@@ -4,8 +4,8 @@ from pathlib import Path
 from types import SimpleNamespace
 import unittest
 
-from agent_env.execution_limits import ExecutionLimits
-from agent_env.pydantic_agent import (
+from agent.execution_limits import ExecutionLimits
+from agent.pydantic_agent import (
     DEFAULT_INSTRUCTIONS,
     PydanticAIAgentAdapter,
     StalledToolLoop,

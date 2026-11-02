@@ -71,3 +71,6 @@ mcp_servers/medcalc/
 mcp_servers/movie-recommender-mcp/
 mcp_servers/time-mcp/
 mcp_servers/weather_mcp/
+
+# Locally reproduced tables and figures
+reproduced_results/

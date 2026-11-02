@@ -9,7 +9,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from agent_env.domain_registry import (  # noqa: E402
+from agent.domain_registry import (  # noqa: E402
     load_available_server_names,
     load_domain_registry,
     select_servers,

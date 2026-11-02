@@ -1,6 +1,6 @@
 import unittest
 
-from scripts.analyze_attack_comparison import (
+from eval.compare_attacks import (
     canonical_prediction,
     normalized_match,
     strict_match,

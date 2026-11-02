@@ -3,12 +3,12 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from privacy_trace.attacker_view import (
+from attack.views import (
     ATTACKER_OBSERVATION_FORMAT,
     ATTACKER_VIEW_POLICY,
     RAW_REPEATED,
 )
-from privacy_trace.channel_experiments import (
+from attack.channels import (
     ATTRIBUTE_DESCRIPTIONS,
     METADATA_SEQUENCE,
     METADATA_SEQUENCE_PARAMETERS,
@@ -20,9 +20,9 @@ from privacy_trace.channel_experiments import (
     server_slug,
     unique_server_names,
 )
-from privacy_trace.privacy_attacker import PROFILE_ATTRIBUTES
-from scripts.analyze_attack_comparison import normalized_match
-from scripts.run_channel_experiments import is_usable_output
+from attack.inference import PROFILE_ATTRIBUTES
+from eval.compare_attacks import normalized_match
+from attack.run_channels import is_usable_output
 
 
 class ChannelExperimentPromptTests(unittest.TestCase):

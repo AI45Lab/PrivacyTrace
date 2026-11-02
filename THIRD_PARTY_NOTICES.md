@@ -38,12 +38,6 @@ OneBusAway, tickadoo, Open Food Facts, OpenFDA, Remoote Jobs, and Keenable Web
 Search are accessed through stateless adapters. Their service terms and data
 policies continue to apply.
 
-## README resource icons
+## README badges
 
-The GitHub mark is from [GitHub Octicons](https://github.com/primer/octicons)
-under the MIT license, retained in `figure/badges/GitHub-Octicons-LICENSE.txt`.
-The Hugging Face mark is from the
-[official Hugging Face assets](https://huggingface.co/front/assets/huggingface_logo-noborder.svg).
-
-The arXiv icon is from [Simple Icons](https://github.com/simple-icons/simple-icons)
-under CC0; the license is retained in `figure/badges/Simple-Icons-LICENSE.md`.
+Resource badges are served by [Shields.io](https://shields.io/).

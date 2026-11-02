@@ -13,7 +13,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.run_agent_scenarios import (  # noqa: E402
+from agent.run_scenarios import (  # noqa: E402
     assess_trajectory,
     build_failure_records,
     build_arg_parser,
@@ -86,7 +86,7 @@ class BatchRunnerTests(unittest.TestCase):
         self.assertEqual(parser.parse_args([]).wall_timeout, 1800.0)
         self.assertFalse(parser.parse_args([]).no_shared_mcp)
         self.assertEqual(parser.parse_args([]).shared_mcp_startup_timeout, 180.0)
-        self.assertEqual(parser.parse_args([]).env_config.name, "agent_env.json")
+        self.assertEqual(parser.parse_args([]).env_config.name, "agent.json")
         self.assertEqual(
             parser.parse_args([]).profiles,
             PROJECT_ROOT

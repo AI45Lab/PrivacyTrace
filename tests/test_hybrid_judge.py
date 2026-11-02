@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from privacy_trace.hybrid_judge import (
+from eval.judge import (
     build_adjudication_prompt,
     build_judge_prompt,
     build_verification_prompt,
@@ -14,7 +14,7 @@ from privacy_trace.hybrid_judge import (
     stable_case_id,
     unique_cases,
 )
-from scripts.run_semantic_judge import (
+from eval.run_judge import (
     build_batches,
     is_usable_output as is_usable_judge_output,
 )

@@ -2,8 +2,8 @@ import json
 import unittest
 from unittest.mock import patch
 
-from privacy_trace.attacker_view import RAW_REPEATED
-from privacy_trace.privacy_attacker import (
+from attack.views import RAW_REPEATED
+from attack.inference import (
     PROFILE_ATTRIBUTES,
     build_one_shot_prompt,
     build_stage2_prompt,
@@ -153,7 +153,7 @@ class PrivacyAttackerTwoStageTests(unittest.TestCase):
         responses = [json.dumps(stage1), json.dumps(stage2)]
 
         with patch(
-            "privacy_trace.privacy_attacker.call_llm",
+            "attack.inference.call_llm",
             side_effect=responses,
         ) as mocked_call:
             result = run_two_stage_attack(
@@ -185,7 +185,7 @@ class PrivacyAttackerTwoStageTests(unittest.TestCase):
         stage1 = validate_output({"profile": profile})
 
         with patch(
-            "privacy_trace.privacy_attacker.call_llm",
+            "attack.inference.call_llm",
             return_value=json.dumps(stage1),
         ) as mocked_call:
             result = run_two_stage_attack([], "test-model", "openai")
@@ -199,7 +199,7 @@ class PrivacyAttackerTwoStageTests(unittest.TestCase):
         stage2 = stage2_for(stage1["unresolved_attributes"])
 
         with patch(
-            "privacy_trace.privacy_attacker.call_llm",
+            "attack.inference.call_llm",
             return_value=json.dumps(stage2),
         ) as mocked_call:
             result = run_stage2_from_stage1(
@@ -281,7 +281,7 @@ class PrivacyAttackerOneShotTests(unittest.TestCase):
         response = json.dumps({"profile": self.one_shot_profile()})
 
         with patch(
-            "privacy_trace.privacy_attacker.call_llm",
+            "attack.inference.call_llm",
             return_value=response,
         ) as mocked_call:
             result = run_one_shot_attack([], "test-model", "openai")

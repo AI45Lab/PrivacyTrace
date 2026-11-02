@@ -3,12 +3,12 @@ from __future__ import annotations
 import random
 import unittest
 
-from privacy_trace.government_ids import (
+from generate.government_ids import (
     GOVERNMENT_ID_RULES,
     inspect_government_id,
     repair_government_id,
 )
-from privacy_trace.profile_generator import (
+from generate.generate_profiles import (
     COUNTRY_PROFILES,
     GOVERNMENT_ID_FORMAT_HINTS,
     build_government_id_audit_prompt,

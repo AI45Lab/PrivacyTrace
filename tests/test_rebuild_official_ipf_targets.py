@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 import pandas
 
-from privacy_trace.profile_generator import (
+from generate.generate_profiles import (
     COUNTRY_PROFILES,
     MENTAL_CONDITIONS,
     OCCUPATION_GROUP_TO_OPTIONS,
@@ -14,7 +14,7 @@ from privacy_trace.profile_generator import (
     build_default_targets,
     skeleton_ipf_coverage,
 )
-from scripts.rebuild_official_ipf_targets import (
+from generate.build_targets import (
     MENTAL_CAUSE_IDS,
     MENTAL_CONDITION_STATISTICS,
     MENTAL_CONDITIONS as TARGET_MENTAL_CONDITIONS,
@@ -97,7 +97,7 @@ class RelativeIncomeTargetTests(unittest.TestCase):
         }
 
         with patch(
-            "privacy_trace.population_targets.income.COUNTRY_CODES",
+            "generate.population_targets.income.COUNTRY_CODES",
             {"Example": {"iso3": "EXP"}},
         ):
             targets, audit = build_education_income_targets(
@@ -185,7 +185,7 @@ class RelativeIncomeTargetTests(unittest.TestCase):
         }
 
         with patch(
-            "privacy_trace.population_targets.income.COUNTRY_CODES",
+            "generate.population_targets.income.COUNTRY_CODES",
             {"Example": {"iso3": "EXP"}},
         ):
             _, audit = build_education_income_targets(
@@ -686,15 +686,15 @@ class RelativeIncomeTargetTests(unittest.TestCase):
 
         with (
             patch(
-                "privacy_trace.population_targets.health.COUNTRY_CODES",
+                "generate.population_targets.health.COUNTRY_CODES",
                 {"Example": {"iso3": "EXP"}},
             ),
             patch(
-                "privacy_trace.population_targets.health.AGE_GROUPS",
+                "generate.population_targets.health.AGE_GROUPS",
                 {"18-24": (18, 24)},
             ),
             patch(
-                "privacy_trace.population_targets.health.GBD_AGE_ID_TO_RANGE",
+                "generate.population_targets.health.GBD_AGE_ID_TO_RANGE",
                 {8: (15, 19), 9: (20, 24)},
             ),
         ):

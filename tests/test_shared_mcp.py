@@ -5,9 +5,9 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from agent_env.execution_limits import ExecutionLimits
-from agent_env.pydantic_agent import PydanticAIAgentAdapter
-from agent_env.shared_mcp import (
+from agent.execution_limits import ExecutionLimits
+from agent.pydantic_agent import PydanticAIAgentAdapter
+from agent.shared_mcp import (
     SharedMCPPool,
     load_shared_mcp_urls,
     normalize_shared_mcp_urls,

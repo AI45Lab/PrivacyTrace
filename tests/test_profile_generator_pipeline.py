@@ -11,8 +11,8 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
 
-from agent_env.recovery import ProviderHealthExceeded, RollingFailureWindow
-from privacy_trace.profile_generator import (
+from agent.recovery import ProviderHealthExceeded, RollingFailureWindow
+from generate.generate_profiles import (
     COUNTRY_PROFILES,
     FULL_SCHEMA_FIELDS,
     NATIONAL_PHONE_LENGTH_OPTIONS,

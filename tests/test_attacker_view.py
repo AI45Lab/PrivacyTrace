@@ -1,6 +1,6 @@
 import unittest
 
-from privacy_trace.attacker_view import (
+from attack.views import (
     LOSSLESS_TOOL_CATALOG,
     RAW_REPEATED,
     build_attacker_observation,

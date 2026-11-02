@@ -2,12 +2,12 @@ import json
 import unittest
 from pathlib import Path
 
-from privacy_trace.privacy_attacker import (
+from attack.inference import (
     PROFILE_ATTRIBUTES as ATTACKER_PROFILE_ATTRIBUTES,
     build_prompt,
     validate_output,
 )
-from privacy_trace.profile_generator import FULL_SCHEMA_FIELDS
+from generate.generate_profiles import FULL_SCHEMA_FIELDS
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]

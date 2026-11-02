@@ -14,9 +14,17 @@ class CLIEntrypointTests(unittest.TestCase):
         env = dict(os.environ)
         env.pop("PYTHONPATH", None)
         commands = [
-            (["-m", "privacy_trace.profile_generator"], "--count"),
-            (["scripts/rebuild_official_ipf_targets.py"], "--income-only"),
-            (["scripts/benchmark_profile_provider.py"], "--help"),
+            (["-m", "generate.generate_profiles"], "--count"),
+            (["generate/build_targets.py"], "--income-only"),
+            (["generate/benchmark_provider.py"], "--help"),
+            (["-m", "generate.generate_scenarios"], "--input"),
+            (["-m", "agent.run_scenarios"], "--profiles"),
+            (["-m", "agent.package_trajectories"], "--source-dir"),
+            (["-m", "attack.run_attacks"], "--attack-mode"),
+            (["-m", "attack.run_channels"], "--input"),
+            (["-m", "attack.run_view_scopes"], "--scope"),
+            (["-m", "eval.run_judge"], "--records"),
+            (["-m", "eval.reproduce_results"], "--output-root"),
         ]
         for arguments, option in commands:
             with self.subTest(command=arguments):

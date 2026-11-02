@@ -4,7 +4,7 @@ import subprocess
 import sys
 import unittest
 
-from privacy_trace.profile_generator import (
+from generate.generate_profiles import (
     GeneratorConfig,
     IPFConstraint,
     OCCUPATIONS,
@@ -136,7 +136,7 @@ class SyntheticProfileGeneratorTests(unittest.TestCase):
         code = """
 import hashlib
 import json
-from privacy_trace.profile_generator import GeneratorConfig, SyntheticProfileGenerator
+from generate.generate_profiles import GeneratorConfig, SyntheticProfileGenerator
 generator = SyntheticProfileGenerator(
     GeneratorConfig(count=30, seed=20260729, skip_ipf=True)
 )

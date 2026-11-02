@@ -119,7 +119,7 @@
 安装依赖后运行：
 
 ```bash
-python scripts/rebuild_official_ipf_targets.py \
+python -m generate.build_targets \
   --ihme-gbd .cache/official_ipf/ihme_gbd_2023.csv
 ```
 

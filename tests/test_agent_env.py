@@ -9,21 +9,21 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from agent_env.execution_limits import ExecutionLimits  # noqa: E402
-from agent_env.case_loader import load_task_case  # noqa: E402
-from agent_env.tool_outcomes import classify_tool_output  # noqa: E402
-from agent_env.domain_registry import (  # noqa: E402
+from agent.execution_limits import ExecutionLimits  # noqa: E402
+from agent.case_loader import load_task_case  # noqa: E402
+from agent.tool_outcomes import classify_tool_output  # noqa: E402
+from agent.domain_registry import (  # noqa: E402
     load_available_server_names,
     load_domain_registry,
     validate_domain_servers,
 )
-from agent_env.models import AgentTurnResult, RunLimits, TaskCase  # noqa: E402
-from agent_env.orchestrator import AgentEnv  # noqa: E402
-from agent_env.user_simulator import (  # noqa: E402
+from agent.models import AgentTurnResult, RunLimits, TaskCase  # noqa: E402
+from agent.orchestrator import AgentEnv  # noqa: E402
+from agent.user_simulator import (  # noqa: E402
     SimulatedUserTurn,
     SimulatorOutputError,
 )
-from scripts.run_agent_scenario import build_arg_parser  # noqa: E402
+from agent.run_scenario import build_arg_parser  # noqa: E402
 
 
 class StubSimulator:

@@ -68,13 +68,13 @@ catalog output or vice versa.
 Example full-attack commands:
 
 ```bash
-python scripts/run_privacy_attacks.py \
+python -m attack.run_attacks \
   --input artifacts/trajectories/trajectories.jsonl \
   --output-dir artifacts/privacy_attacks/raw_repeated \
   --attack-mode one_shot \
   --observation-format raw_repeated
 
-python scripts/run_privacy_attacks.py \
+python -m attack.run_attacks \
   --input artifacts/trajectories/trajectories.jsonl \
   --output-dir artifacts/privacy_attacks/lossless_tool_catalog \
   --attack-mode one_shot \

@@ -48,7 +48,7 @@ ignored by Git. Review each stage before proceeding.
 `docs/data_access.md`, then run:
 
 ```bash
-python scripts/build_paper_results.py --input-root . --output-root reproduced_results
+python -m eval.reproduce_results --input-root .
 ```
 
 If data were extracted elsewhere, pass that directory as `--input-root`. It

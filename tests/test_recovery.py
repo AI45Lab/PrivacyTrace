@@ -4,7 +4,7 @@ import unittest
 from unittest.mock import patch
 from pathlib import Path
 
-from agent_env.recovery import (
+from agent.recovery import (
     FailureLedger,
     RecoveryContract,
     RollingFailureWindow,
@@ -149,7 +149,7 @@ class RecoveryContractTests(unittest.TestCase):
     def test_resolving_unknown_item_does_not_rewrite_snapshot(self):
         with tempfile.TemporaryDirectory() as directory:
             ledger = FailureLedger(Path(directory), phase="judge", run_id="run-1")
-            with patch("agent_env.recovery.atomic_write_jsonl") as write_snapshot:
+            with patch("agent.recovery.atomic_write_jsonl") as write_snapshot:
                 ledger.resolve("already-valid")
             write_snapshot.assert_not_called()
 

@@ -2,7 +2,7 @@
 
 来源文件：`data/targets/demographic_targets_2025.json`
 
-本文件由 `scripts/rebuild_official_ipf_targets.py` 自动生成。除非另有说明，所有数值均为完整 26 国、18–80 岁抽样框中的联合比例。
+本文件由 `generate/build_targets.py` 自动生成。除非另有说明，所有数值均为完整 26 国、18–80 岁抽样框中的联合比例。
 
 ## 状态
 

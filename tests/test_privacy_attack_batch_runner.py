@@ -3,17 +3,17 @@ import unittest
 import json
 from pathlib import Path
 
-from privacy_trace.attacker_view import (
+from attack.views import (
     ATTACKER_OBSERVATION_FORMAT,
     ATTACKER_VIEW_POLICY,
     RAW_REPEATED,
 )
-from scripts.run_privacy_attacks import (
+from attack.run_attacks import (
     build_arg_parser,
     has_usable_attack,
     select_trajectory_files,
 )
-from privacy_trace.privacy_attacker import PROFILE_ATTRIBUTES
+from attack.inference import PROFILE_ATTRIBUTES
 
 
 class PrivacyAttackBatchRunnerTests(unittest.TestCase):
